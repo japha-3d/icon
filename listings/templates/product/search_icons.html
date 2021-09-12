@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block title %}Japha{% endblock title %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-3">
+
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="card shadow-custom border-0 mb-4">
+        <div class="card-body text-center">
+            <h2 class="font-weight-bold text-grey">
+                Search Results
+            </h2>
+            <div class="bottom_line"></div>
+        </div>
+    </div>
+    {% if products|length == 0 %}
+    <h5 class='text-center  ' style="color:black">No Icons Found,Try another keyword</h5> {% endif %}
+    <div class="row no-gutters">
+        {% for product in products %}
+        <a href="/{{product.pk}}"> <img class='mx-3 mt-3' style="width: 50px;height: 50px;" src="{{product.image.url}}" alt=""> </a>{% endfor %}
+    </div>
+</div>
+<div class="col-lg-3"></div>
+</div>
+<hr>{% endblock content %}

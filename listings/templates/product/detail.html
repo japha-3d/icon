@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %}{{ product.name }}{% endblock %} {% block content %}
+<div class="card shadow-custom border-0 col-lg-8 mx-auto">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <img src="{{ product.image.url }}" alt="" class="img-fluid mt-5 rounded-0">
+        </div>
+        <div class="col-lg-6">
+            <div class="top">
+                <a href="{{product.image.url}}" download> <button style="width:300px;height:100px;font-size:50px" type="button" class="btn btn-outline-success mt-3">Download</button></a>
+
+                <div>
+                    <img src="" alt="">
+
+                    <h3 class=" text-center mt-3 mb-2"> Html</h3>
+                    <h6>Size(25×25)</h6>
+                    <input type="text" style="border-color: blue ; background-color:black; color:white; height:50px" value="<img style='width:25px; height:25px' src='http://127.0.0.1:8000{{product.image.url}}'" id="myInput">
+
+                    <!-- The button used to copy the text -->
+                    <button class='btn btn-outline-success' onclick="myFunction()">Copy Code</button>
+                    <h6 class='mt-2'>Size(50×50)</h6>
+                    <input type="text" style="border-color: blue ; background-color:black; color:white; height:50px" value="<img style='width:50px; height:50px' src='http://127.0.0.1:8000{{product.image.url}}'" id="myInput">
+
+                    <!-- The button used to copy the text -->
+                    <button class='btn btn-outline-success' onclick="myFunction()">Copy Code</button>
+                    <script>
+                        function myFunction() {
+                            /* Get the text field */
+                            var copyText = document.getElementById("myInput");
+
+                            /* Select the text field */
+                            copyText.select();
+                            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+                            /* Copy the text inside the text field */
+                            navigator.clipboard.writeText(copyText.value);
+
+                            /* Alert the copied text */
+                            alert("Copied the text: " + copyText.value);
+                        }
+                    </script>
+                    <a href="/"> <button style="width:300px;height:100px;font-size:50px" type="button" class="btn btn-outline-success mt-3 mb-3">Home</button></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<hr class="col-7 mx-auto">
+<div class="card shadow-custom border-0 col-lg-8 mx-auto mb-3">
+
+
+
+    {% endblock content %}

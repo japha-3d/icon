@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block title %}Japha{% endblock title %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-3">
+        <div class="card shadow-custom border-0">
+            <h4 class="p-3 font-weight-bold text-grey">
+                Latest
+            </h4>
+            <ul class="list-group border-0 categories_list">
+
+                {% for category in categories|slice:":4" reversed %}
+                <li {% if category.slug == requested_category.slug %} class="list-group-item border-0 p-0 selected" {% else %} class="list-group-item border-0 p-0 unselected" {% endif %}>
+                    <a href="{{ category.get_absolute_url }}" class="btn btn-block text-left">
+{{ category.name }}
+</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow-custom border-0 mb-4">
+            <div class="card-body text-center">
+                <h2 class="font-weight-bold text-grey">
+                    {% if requested_category %} {{ requested_category.name }} {% endif %}
+                </h2>
+                <div class="bottom_line"></div>
+            </div>
+        </div>
+        <div class="card shadow-custom border-0 ">
+            <div class="card-body text-center">
+                <a href="{{requested_category.zip.url}}" download><button type="button" class="btn btn-success">Download zip file of this packet</button></a>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            {% for product in products %}
+          <a href="/{{product.pk}}">  <img class='mx-3 mt-3' style="width: 50px;height: 50px;" src="{{product.image.url}}" alt=""> </a>{% endfor %}
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+<hr>{% endblock content %}
